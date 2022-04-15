@@ -3,6 +3,12 @@
 # What is progress?
 progressは簡単にプログレスバーを作成することを目的としたものです。
 
+# Install 
+
+```
+npm i https://github.com/akikaki-bot/progress
+```
+
 # How to use?
 ```
 const { ProgressBar } = require('progress')
