@@ -1,23 +1,40 @@
 # Progress
 
-# What is progress?
-progressは簡単にプログレスバーを作成することを目的としたものです。
+## What is progress?
 
-# Install 
+簡単にプログレスバーをコンソールでつくれるやーつです
 
-```
+## Install
+
+```cmd
 npm i https://github.com/akikaki-bot/progress
 ```
 
-# How to use?
-```
+## How to use?
+
+- NormalProgressBar
+
+```js
 const { ProgressBar } = require('progress')
 
 let pgr = new ProgressBar()
 
-pgr.gen(10,100)
+pgr.gen({ 10,100 })
 //Return [#---------]
 ```
 
-# Licence
+- Customized ProgressBar
+
+```js
+
+const { ProgressBar } = require('progress')
+
+const progress = new ProgressBar().setProgressTextA('$').setProgressTextB('~').gen( {10, 100} )
+
+console.log(progress)
+
+```
+
+## Licence
+
 このパッケージはMITライセンスで保護されています。

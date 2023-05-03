@@ -10,28 +10,32 @@ var ProgressBar = /** @class */ (function () {
      *
      * 初期値は "#"です。
      * ※最大で2文字
+     * @returns this
      * @example
-     * ProgressBar.pgrGUIa("#")
+     * this.setProgressTextA("#")
      *
      * //60％[######----]
      *
     */
-    ProgressBar.prototype.pgrGUIa = function (string) {
+    ProgressBar.prototype.setProgressTextA = function (string) {
         this.a = string;
+        return this;
     };
     /**
      * @param これはprogressバーを作る際の文字を設定できます。
      *
      * 初期値は "-"です。
      * ※最大で2文字
+     * @returns this
      * @example
-     * ProgressBar.pgrGUIb("=")
+     * this.setProgressTextB("=")
      *
      * //60％[######====]
      *
     */
-    ProgressBar.prototype.pgrGUIb = function (string) {
+    ProgressBar.prototype.setProgressTextB = function (string) {
         this.b = string;
+        return this;
     };
     /**
      *
@@ -40,8 +44,8 @@ var ProgressBar = /** @class */ (function () {
      * @returns Progress String
      */
     ProgressBar.prototype.gen = function (setting) {
-        var disa = "#";
-        var disb = "-";
+        var disa = this.a ? this.a : "#";
+        var disb = this.b ? this.b : "-";
         /**
          * @param Errors.
          */
@@ -49,10 +53,6 @@ var ProgressBar = /** @class */ (function () {
             throw new Error('[ProgressBar / pgrGUIa ] pgrGUIa settings length longest than 2.');
         if (Number(this.b.length) > 2)
             throw new Error('[ProgressBar / pgrGUIb ] pgrGUIb settings length longest than 2.');
-        if (this.a)
-            disa = this.a;
-        if (this.b)
-            disb = this.b;
         if (!setting.count)
             throw new Error('[ProgressBar / gen(*count*, max)] count setting is undefined in Gen function. ');
         if (!setting.max)
@@ -68,17 +68,13 @@ var ProgressBar = /** @class */ (function () {
     ProgressBar.prototype.generate = function (setting) {
         var _this = this;
         return new Promise(function (resolve, reject) {
-            var disa = "#";
-            var disb = "-";
+            var disa = _this.a ? _this.a : "#";
+            var disb = _this.b ? _this.b : "-";
             /**
              * @param Errors.
              */
             //if(this.pgrGUIa.length > 2) throw new Error('[ProgressBar / pgrGUIa ] pgrGUIa settings length longest than 2.') 
             //if(this.pgrGUIb.length > 2) throw new Error('[ProgressBar / pgrGUIb ] pgrGUIb settings length longest than 2.')
-            if (_this.a)
-                disa = _this.a;
-            if (_this.b)
-                disb = _this.b;
             if (!setting.count)
                 reject('[ProgressBar / gen(*count*, max)] count setting is undefined in Gen function. ');
             if (!setting.max)

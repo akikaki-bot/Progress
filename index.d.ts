@@ -1,29 +1,31 @@
-export declare class ProgressBar<T extends string> {
+export declare class ProgressBar<T = string> {
     /**
      * @param これはprogressバーを作る際の文字を設定できます。
      *
      * 初期値は "#"です。
      * ※最大で2文字
+     * @returns this
      * @example
-     * ProgressBar.pgrGUIa("#")
+     * this.setProgressTextA("#")
      *
      * //60％[######----]
      *
     */
-    pgrGUIa(string: string): void;
+    setProgressTextA(string: string): this;
     private a;
     /**
      * @param これはprogressバーを作る際の文字を設定できます。
      *
      * 初期値は "-"です。
      * ※最大で2文字
+     * @returns this
      * @example
-     * ProgressBar.pgrGUIb("=")
+     * this.setProgressTextB("=")
      *
      * //60％[######====]
      *
     */
-    pgrGUIb(string: string): void;
+    setProgressTextB(string: string): this;
     private b;
     /**
      *
